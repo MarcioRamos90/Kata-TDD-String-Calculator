@@ -29,4 +29,11 @@ describe('String Calculator', () => {
     expect(sut.add('3, 2 , 1 , 3 , 4')).toBe(13)
     expect(sut.add('3, 2 , 1 , 3 , 4, 1, 1, 100, 215')).toBe(330)
   })
+
+  it('ensure StringCalculator.add handle new lines between numbers (instead of commas)', () => {
+    const sut = new StringCalculator('')
+    expect(sut.add('3\n2')).toBe(5)
+    expect(sut.add('3\n2, 4')).toBe(9)
+    expect(sut.add('3\n2, 4 \n 20')).toBe(29)
+  })
 })
