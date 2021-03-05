@@ -23,4 +23,10 @@ describe('String Calculator', () => {
     expect(sut.add('-4, 23')).toBe(19)
     expect(sut.add('4, -23')).toBe(-19)
   })
+
+  it('Should StringCalculator.add returns the sum if are provided an unknown amount of numbers', () => {
+    const sut = new StringCalculator('')
+    expect(sut.add('3, 2 , 1 , 3 , 4')).toBe(13)
+    expect(sut.add('3, 2 , 1 , 3 , 4, 1, 1, 100, 215')).toBe(330)
+  })
 })
