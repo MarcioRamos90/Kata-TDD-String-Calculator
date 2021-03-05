@@ -15,4 +15,12 @@ describe('String Calculator', () => {
     expect(sut.add('13.21414')).toBe(13.21414)
     expect(sut.add('-321414')).toBe(-321414)
   })
+
+  it('Should returns the sum if StringCalculator.add receive "number, number"', () => {
+    const sut = new StringCalculator('')
+    expect(sut.add('3, 2')).toBe(5)
+    expect(sut.add('4, 23')).toBe(27)
+    expect(sut.add('-4, 23')).toBe(19)
+    expect(sut.add('4, -23')).toBe(-19)
+  })
 })
