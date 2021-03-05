@@ -9,11 +9,9 @@ class StringCalculator {
   }
 
   verifyInput(numbers = '') {
-    if (/^\$\$/.test(numbers)) {
+    if (/^\/\//.test(numbers)) {
       this.defaultDelimiter = '\;'
-
       this.constructDelimiters()
-
       return numbers.slice(3)
     }
     return numbers

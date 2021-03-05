@@ -39,8 +39,8 @@ describe('String Calculator', () => {
 
   it('Should support different delimiters when the string has this configuration: “//[delimiter]\\n[numbers...]”', () => {
     const sut = new StringCalculator()
-    expect(sut.add('$$;\n1;2')).toBe(3)
-    expect(sut.add('$$;\n1;2;4')).toBe(7)
-    expect(sut.add('$$;\n1;2;4; 10; 10')).toBe(27)
+    expect(sut.add('//;\n1;2')).toBe(3)
+    expect(sut.add('//;\n1;2;4')).toBe(7)
+    expect(sut.add('//;\n1;2;4; 10; 10')).toBe(27)
   })
 })
