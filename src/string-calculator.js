@@ -22,7 +22,9 @@ class StringCalculator {
   add(numbers = "") {
     numbers = this.verifyInput(numbers)
     if (!numbers) return 0
-    let numbersConverted = numbers.split(this.delimiterRegex).map(numberString => +numberString)
+    let numbersConverted = numbers.split(this.delimiterRegex)
+      .filter(numberString => !!numberString)
+      .map(numberString => +numberString.trim())
     this.numbersValidator(numbersConverted)
     return numbersConverted.reduce((prev, curr) => prev + curr, 0)
   }
