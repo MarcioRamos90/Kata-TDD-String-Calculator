@@ -21,12 +21,16 @@ class StringCalculator {
     numbers = this.verifyInput(numbers)
     if (!numbers) return 0
     let numbersConverted = numbers.split(this.delimiterRegex).map(numberString => +numberString)
-    for (const num of numbersConverted) {
+    this.numbersValidator(numbersConverted)
+    return numbersConverted.reduce((prev, curr) => prev + curr, 0)
+  }
+
+  numbersValidator(numbers = 0) {
+    for (const num of numbers) {
       if (num < 0) {
         throw Error('negatives not allowed')
       }
     }
-    return numbersConverted.reduce((prev, curr) => prev + curr, 0)
   }
 }
 
