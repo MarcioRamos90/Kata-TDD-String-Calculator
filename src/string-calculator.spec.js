@@ -1,4 +1,5 @@
 const StringCalculator = require('./string-calculator').StringCalculator
+const NegativeNumberError = require('./errors/negative-number.error').NegativeNumberError
 
 describe('String Calculator', () => {
   it('Should returns 0 if StringCalculator.add receive an empty string', () => {
@@ -43,9 +44,9 @@ describe('String Calculator', () => {
 
   it('Should StringCalculator.add throw an error if a negative number is provided', () => {
     const sut = new StringCalculator()
-    expect(() => sut.add('-3214')).toThrowError(new Error('negatives not allowed'))
-    expect(() => sut.add('1, -3214')).toThrowError(new Error('negatives not allowed'))
-    expect(() => sut.add('1\n -3214')).toThrowError(new Error('negatives not allowed'))
-    expect(() => sut.add('//;\n1;-12')).toThrowError(new Error('negatives not allowed'))
+    expect(() => sut.add('-3214')).toThrowError(new NegativeNumberError())
+    expect(() => sut.add('1, -3214')).toThrowError(new NegativeNumberError())
+    expect(() => sut.add('1\n -3214')).toThrowError(new NegativeNumberError())
+    expect(() => sut.add('//;\n1;-12')).toThrowError(new NegativeNumberError())
   })
 })

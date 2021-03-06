@@ -1,3 +1,5 @@
+const NegativeNumberError = require('./errors/negative-number.error').NegativeNumberError
+
 class StringCalculator {
   constructor() {
     this.defaultDelimiter = ','
@@ -28,7 +30,7 @@ class StringCalculator {
   numbersValidator(numbers = 0) {
     for (const num of numbers) {
       if (num < 0) {
-        throw Error('negatives not allowed')
+        throw new NegativeNumberError()
       }
     }
   }
