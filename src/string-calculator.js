@@ -30,10 +30,16 @@ class StringCalculator {
   }
 
   numbersValidator(numbers = 0) {
+    let count = 0
     for (const num of numbers) {
       if (num < 0) {
-        throw new NegativeNumberError()
+        count++
       }
+    }
+    if (count === 1) {
+      throw new NegativeNumberError()
+    } else if (count > 1) {
+      throw new Error(`negative numbers [${numbers.toString()}] are not allowed`)
     }
   }
 }

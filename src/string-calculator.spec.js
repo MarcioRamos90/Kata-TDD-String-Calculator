@@ -49,4 +49,12 @@ describe('String Calculator', () => {
     expect(() => sut.add('1\n -3214')).toThrowError(new NegativeNumberError())
     expect(() => sut.add('//;\n1;-12')).toThrowError(new NegativeNumberError())
   })
+
+  it('Should StringCalculator.add throw an exception showing all numbers if multiple negative numbers are provided', () => {
+    const sut = new StringCalculator()
+    expect(() => sut.add(' -3214, -12')).toThrowError(new Error('negative numbers [-3214,-12] are not allowed'))
+    expect(() => sut.add('-1, -3214')).toThrowError(new Error('negative numbers [-1,-3214] are not allowed'))
+    expect(() => sut.add('-1\n -3214')).toThrowError(new Error('negative numbers [-1,-3214] are not allowed'))
+    expect(() => sut.add('//;\n-1; -12')).toThrowError(new Error('negative numbers [-1,-12] are not allowed'))
+  })
 })
