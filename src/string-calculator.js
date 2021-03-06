@@ -1,4 +1,6 @@
 const NegativeNumberError = require('./errors/negative-number.error').NegativeNumberError
+const MultipleNegativeNumbersError = require('./errors/multiple-negative-numbers.error').MultipleNegativeNumbersError
+
 const reduceArray = require('./helpers/sum').reduce
 const convertStringToNumber = require('./helpers/convert').convertStringToNumber
 
@@ -45,7 +47,7 @@ class StringCalculator {
     if (count === 1) {
       throw new NegativeNumberError()
     } else if (count > 1) {
-      throw new Error(`negative numbers [${numbers.toString()}] are not allowed`)
+      throw new MultipleNegativeNumbersError(numbers)
     }
   }
 

@@ -1,5 +1,6 @@
 const StringCalculator = require('./string-calculator').StringCalculator
 const NegativeNumberError = require('./errors/negative-number.error').NegativeNumberError
+const MultipleNegativeNumbersError = require('./errors/multiple-negative-numbers.error').MultipleNegativeNumbersError
 
 describe('String Calculator add', () => {
   it('Should returns 0 if StringCalculator.add receive an empty string', () => {
@@ -51,10 +52,10 @@ describe('String Calculator add', () => {
 
   it('Should StringCalculator.add throw an exception showing all numbers if multiple negative numbers are provided', () => {
     const sut = new StringCalculator()
-    expect(() => sut.add(' -3214, -12')).toThrowError(new Error('negative numbers [-3214,-12] are not allowed'))
-    expect(() => sut.add('-1, -3214')).toThrowError(new Error('negative numbers [-1,-3214] are not allowed'))
-    expect(() => sut.add('-1\n -3214')).toThrowError(new Error('negative numbers [-1,-3214] are not allowed'))
-    expect(() => sut.add('//;\n-1; -12')).toThrowError(new Error('negative numbers [-1,-12] are not allowed'))
+    expect(() => sut.add(' -3214, -12')).toThrowError(new MultipleNegativeNumbersError([-3214,-12]))
+    expect(() => sut.add('-1, -3214')).toThrowError(new MultipleNegativeNumbersError([-1,-3214]))
+    expect(() => sut.add('-1\n -3214')).toThrowError(new MultipleNegativeNumbersError([-1,-3214]))
+    expect(() => sut.add('//;\n-1; -12')).toThrowError(new MultipleNegativeNumbersError([-1,-12]))
   })
 
   it('Should StringCalculator.add ignores number bigger than 1000', () => {
