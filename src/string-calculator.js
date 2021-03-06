@@ -36,6 +36,7 @@ class StringCalculator {
     let numbersConverted = numbers.split(this.delimiterRegex)
       .filter(numberString => !!numberString)
       .map(numberString => +numberString.trim())
+      .filter(number => number <= 1000)
     this.numbersValidator(numbersConverted)
     return numbersConverted.reduce((prev, curr) => prev + curr, 0)
   }

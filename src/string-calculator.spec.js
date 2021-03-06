@@ -12,7 +12,6 @@ describe('String Calculator add', () => {
     const sut = new StringCalculator()
     expect(sut.add('3')).toBe(3)
     expect(sut.add('11')).toBe(11)
-    expect(sut.add('111321414')).toBe(111321414)
     expect(sut.add('13.21414')).toBe(13.21414)
   })
 
@@ -56,6 +55,12 @@ describe('String Calculator add', () => {
     expect(() => sut.add('-1, -3214')).toThrowError(new Error('negative numbers [-1,-3214] are not allowed'))
     expect(() => sut.add('-1\n -3214')).toThrowError(new Error('negative numbers [-1,-3214] are not allowed'))
     expect(() => sut.add('//;\n-1; -12')).toThrowError(new Error('negative numbers [-1,-12] are not allowed'))
+  })
+
+  it('Should StringCalculator.add ignores number bigger than 1000', () => {
+    const sut = new StringCalculator()
+    expect(sut.add('3, 1001')).toBe(3)
+    expect(sut.add('3, 1000')).toBe(1003)
   })
 })
 
