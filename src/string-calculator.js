@@ -4,10 +4,19 @@ class StringCalculator {
   constructor() {
     this.defaultDelimiter = ','
     this.constructDelimiters()
+    this.timesAddWasInvoked = 0
   }
   
   constructDelimiters() {
     this.delimiterRegex = new RegExp(`[${this.defaultDelimiter} | \n]`)
+  }
+
+  getCalledCount() {
+    return this.timesAddWasInvoked
+  }
+
+  setTimesAddWasInvoked() {
+    this.timesAddWasInvoked++
   }
 
   verifyInput(numbers = '') {
@@ -20,6 +29,8 @@ class StringCalculator {
   }
 
   add(numbers = "") {
+    this.setTimesAddWasInvoked()
+
     numbers = this.verifyInput(numbers)
     if (!numbers) return 0
     let numbersConverted = numbers.split(this.delimiterRegex)

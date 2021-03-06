@@ -1,7 +1,7 @@
 const StringCalculator = require('./string-calculator').StringCalculator
 const NegativeNumberError = require('./errors/negative-number.error').NegativeNumberError
 
-describe('String Calculator', () => {
+describe('String Calculator add', () => {
   it('Should returns 0 if StringCalculator.add receive an empty string', () => {
     const sut = new StringCalculator()
     const result = sut.add('')
@@ -56,5 +56,17 @@ describe('String Calculator', () => {
     expect(() => sut.add('-1, -3214')).toThrowError(new Error('negative numbers [-1,-3214] are not allowed'))
     expect(() => sut.add('-1\n -3214')).toThrowError(new Error('negative numbers [-1,-3214] are not allowed'))
     expect(() => sut.add('//;\n-1; -12')).toThrowError(new Error('negative numbers [-1,-12] are not allowed'))
+  })
+})
+
+describe('String Calculator getCalledCount', () => {
+  it('Should returns 0 if StringCalculator.getCalledCount returns how many times add() was invoked.', () => {
+    const sut = new StringCalculator()
+    sut.add('3, 2')
+    sut.add('3, 2')
+    sut.add('3, 2')
+    expect(sut.getCalledCount()).toBe(3)
+    sut.add()
+    expect(sut.getCalledCount()).toBe(4)
   })
 })
