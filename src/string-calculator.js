@@ -1,4 +1,5 @@
 const NegativeNumberError = require('./errors/negative-number.error').NegativeNumberError
+const reduce = require('./helpers/sum').reduce
 
 class StringCalculator {
   constructor() {
@@ -38,7 +39,7 @@ class StringCalculator {
       .map(numberString => +numberString.trim())
       .filter(number => number <= 1000)
     this.numbersValidator(numbersConverted)
-    return numbersConverted.reduce((prev, curr) => prev + curr, 0)
+    return reduce(numbersConverted)
   }
 
   numbersValidator(numbers = 0) {
