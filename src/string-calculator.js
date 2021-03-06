@@ -20,7 +20,6 @@ class StringCalculator {
   add(numbers = "") {
     numbers = this.verifyInput(numbers)
     if (!numbers) return 0
-    if (numbers.split(this.delimiterRegex).length === 1) return +numbers
     let numbersConverted = numbers.split(this.delimiterRegex).map(numberString => +numberString)
     return numbersConverted.reduce((prev, curr) => prev + curr, 0)
   }
