@@ -40,6 +40,7 @@ describe('String Calculator add', () => {
     expect(sut.add('//;\n1;2')).toBe(3)
     expect(sut.add('//;\n1;2;4')).toBe(7)
     expect(sut.add('//;\n1;2;4; 10; 10')).toBe(27)
+    expect(sut.verifyInput('1,2,4, 10, 10')).toBe('1,2,4, 10, 10')
   })
 
   it('Should StringCalculator.add throw an error if a negative number is provided', () => {
@@ -62,6 +63,12 @@ describe('String Calculator add', () => {
     const sut = new StringCalculator()
     expect(sut.add('3, 1001')).toBe(3)
     expect(sut.add('3, 1000')).toBe(1003)
+  })
+
+  it('Should allow switch the delimiters by any string length', () => {
+    const sut = new StringCalculator()
+    expect(sut.add('//***\n1***2')).toBe(3)
+    expect(sut.add('//xxaa\n2xxaa2')).toBe(4)
   })
 })
 

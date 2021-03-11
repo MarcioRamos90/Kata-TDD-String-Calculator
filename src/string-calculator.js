@@ -24,7 +24,8 @@ class StringCalculator {
 
   verifyInput(numbers = '') {
     if (/^\/\//.test(numbers)) {
-      this.defaultDelimiter = '\;'
+      let character = `${numbers.slice(2, numbers.match(/\n/).index)}`
+      this.defaultDelimiter = `${character}`      
       this.constructDelimiters()
       return numbers.slice(3)
     }
