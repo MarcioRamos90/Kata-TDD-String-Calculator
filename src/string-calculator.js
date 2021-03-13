@@ -6,20 +6,56 @@ const convertStringToNumber = require('./helpers/convert').convertStringToNumber
 
 class StringCalculator {
   constructor() {
-    this.defaultDelimiter = [',']
-    this.constructDelimiters()
     this.timesAddWasInvoked = 0
   }
 
   add(numbers = "") {
     this.setTimesAddWasInvoked()
-
-    numbers = this.verifyInput(numbers)
     if (!numbers) return 0
+    const extractNumbers = new ExtractNumbers()
+    let numbersConverted = extractNumbers.extract(numbers)
+    this.numbersValidator(numbersConverted)
+    return this.numbersConverted(numbersConverted)
+  }
+  
+  numbersConverted(numbers) {
+    return reduceArray(numbers)
+  }
+
+  numbersValidator(numbers = 0) {
+    let count = 0
+    for (const num of numbers) {
+      if (num < 0) {
+        count++
+      }
+    }
+    if (count === 1) {
+      throw new NegativeNumberError()
+    } else if (count > 1) {
+      throw new MultipleNegativeNumbersError(numbers)
+    }
+  }
+
+  getCalledCount() {
+    return this.timesAddWasInvoked
+  }
+
+  setTimesAddWasInvoked() {
+    this.timesAddWasInvoked++
+  }
+}
+
+class ExtractNumbers {
+  constructor() {
+    this.defaultDelimiter = [',']
+    this.constructDelimiters()
+  }
+
+  extract(numbers = "") {
+    numbers = this.verifyInput(numbers)
     let numbersConverted = this.convertArray(numbers)
       .filter(number => number <= 1000)
-    this.numbersValidator(numbersConverted)
-    return reduceArray(numbersConverted)
+    return numbersConverted
   }
 
   extractDelimiters(string) {
@@ -63,14 +99,6 @@ class StringCalculator {
 
   constructDelimiters() {
     this.delimiterRegex = new RegExp(`[${this.defaultDelimiter} | \n]`)
-  }
-
-  getCalledCount() {
-    return this.timesAddWasInvoked
-  }
-
-  setTimesAddWasInvoked() {
-    this.timesAddWasInvoked++
   }
 }
 
