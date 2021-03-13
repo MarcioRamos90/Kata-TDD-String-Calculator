@@ -70,6 +70,13 @@ describe('String Calculator add', () => {
     expect(sut.add('//***\n1***2')).toBe(3)
     expect(sut.add('//xxaa\n2xxaa2')).toBe(4)
   })
+
+  it('Should StringCalculator allow multiple delimiters like this: “//[delim1][delim2]\\n”', () => {
+    const sut = new StringCalculator()
+    expect(sut.add('//[*][%]\n1*2%3')).toBe(6)
+    expect(sut.add('//[*][%][h$%]\n1*2%3h$%55')).toBe(61)
+    expect(sut.add('//[***][%][h$%]\n1***4%h$%2')).toBe(7)
+  })
 })
 
 describe('String Calculator getCalledCount', () => {

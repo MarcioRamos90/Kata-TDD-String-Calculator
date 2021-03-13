@@ -6,7 +6,7 @@ const convertStringToNumber = require('./helpers/convert').convertStringToNumber
 
 class StringCalculator {
   constructor() {
-    this.defaultDelimiter = ','
+    this.defaultDelimiter = [',']
     this.constructDelimiters()
     this.timesAddWasInvoked = 0
   }
@@ -22,10 +22,19 @@ class StringCalculator {
     return reduceArray(numbersConverted)
   }
 
+  extractDelimiters(string) {
+    const regex = /\[.+\]/
+    if (regex.test(string)) {
+      const match = string.match(regex)[0]
+      return match.slice(1, match.length - 1).split('][').map(i => i).filter(i => !!i)
+    }
+    return [string.slice(2, string.match(/\n/).index)]
+  }
+
   verifyInput(numbers = '') {
     if (/^\/\//.test(numbers)) {
-      let character = `${numbers.slice(2, numbers.match(/\n/).index)}`
-      this.defaultDelimiter = `${character}`      
+      let delimiters = this.extractDelimiters(numbers)
+      this.defaultDelimiter = delimiters 
       this.constructDelimiters()
       return numbers.slice(3)
     }
