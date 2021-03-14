@@ -5,9 +5,9 @@ const ExtractNumbers = require('./extract-numbers').ExtractNumbers
 const reduceArray = require('./helpers/sum').reduce
 
 class StringCalculator {
-  constructor(extractNumbers = ExtractNumbers) {
+  constructor(extractNumbers) {
     this.timesAddWasInvoked = 0
-    this.extractNumbers = new extractNumbers()
+    this.extractNumbers = extractNumbers
   }
 
   add(numbers = "") {
