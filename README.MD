@@ -11,4 +11,4 @@
   
   npm install
   
-  npm test or   npm test-coverage
+  npm test or   npm run test-coverage
