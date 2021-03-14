@@ -1,7 +1,7 @@
 const StringCalculator = require('./string-calculator').StringCalculator
 const ExtractNumbers = require('./extract-numbers').ExtractNumbers
-const NegativeNumberError = require('./errors/negative-number.error').NegativeNumberError
-const MultipleNegativeNumbersError = require('./errors/multiple-negative-numbers.error').MultipleNegativeNumbersError
+const NegativeNumberError = require('../../errors/negative-number.error').NegativeNumberError
+const MultipleNegativeNumbersError = require('../../errors/multiple-negative-numbers.error').MultipleNegativeNumbersError
 
 const makeExtractNumbersStub = () => {
   class ExtractNumbersStub {

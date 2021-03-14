@@ -1,7 +1,7 @@
-const NegativeNumberError = require('./errors/negative-number.error').NegativeNumberError
-const MultipleNegativeNumbersError = require('./errors/multiple-negative-numbers.error').MultipleNegativeNumbersError
+const NegativeNumberError = require('../../errors/negative-number.error').NegativeNumberError
+const MultipleNegativeNumbersError = require('../../errors/multiple-negative-numbers.error').MultipleNegativeNumbersError
 
-const reduceArray = require('./helpers/sum').reduce
+const reduceArray = require('../../helpers/sum').reduce
 
 class StringCalculator {
   constructor(extractNumbers) {

@@ -1,4 +1,4 @@
-const convertStringToNumber = require('./helpers/convert').convertStringToNumber
+const convertStringToNumber = require('../../helpers/convert').convertStringToNumber
 
 class ExtractNumbers {
   constructor() {
