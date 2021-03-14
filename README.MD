@@ -10,4 +10,4 @@
   
   npm install
   
-  npm test
+  npm test or   npm run test-coverage
