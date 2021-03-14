@@ -5,9 +5,9 @@ name: Build Status
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   build:
@@ -26,7 +26,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    - run: npm run test-coverage
+    - run: npm run test
 
     # Only run the coverage once
     - if: ${{ matrix.node-version == '14.x' }}
