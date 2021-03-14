@@ -1,4 +1,5 @@
-[![Coverage Badge](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/MarcioRamos90/56acb6c98677c3057bf40d8b43b117b2079561f3/raw/Kata-TDD-String-Calculator__heads_master.json)]
+[![Test Coverage: 100%](https://img.shields.io/badge/Test%20Coverage-100%25-brightgreen.svg?logo=jest)](/tests)
+
 
 
 # The kata provided by https://osherove.com/tdd-kata-1
