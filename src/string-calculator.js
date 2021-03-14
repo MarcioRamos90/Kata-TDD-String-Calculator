@@ -1,6 +1,5 @@
 const NegativeNumberError = require('./errors/negative-number.error').NegativeNumberError
 const MultipleNegativeNumbersError = require('./errors/multiple-negative-numbers.error').MultipleNegativeNumbersError
-const ExtractNumbers = require('./extract-numbers').ExtractNumbers
 
 const reduceArray = require('./helpers/sum').reduce
 
