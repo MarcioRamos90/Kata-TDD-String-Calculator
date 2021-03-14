@@ -29,6 +29,18 @@ describe('String Calculator add', () => {
     expect(result).toBe(0)
   })
 
+  it('Should StringCalculator.add returns the numbers if are provided a number', () => {
+    const { sut, extractNumbersStub } = makeStringCalculator()
+    jest.spyOn(extractNumbersStub, 'extract').mockReturnValueOnce([3])
+    expect(sut.add('3')).toBe(3)
+  })
+
+  it('Should StringCalculator.add returns the numbers if are provided two numbers', () => {
+    const { sut, extractNumbersStub } = makeStringCalculator()
+    jest.spyOn(extractNumbersStub, 'extract').mockReturnValueOnce([3, 2])
+    expect(sut.add('3, 2')).toBe(5)
+  })
+
   it('Should StringCalculator.add returns the numbers if are provided an unknown amount of numbers', () => {
     const { sut, extractNumbersStub } = makeStringCalculator()
     jest.spyOn(extractNumbersStub, 'extract').mockReturnValueOnce([3, 2 , 1 , 3 , 4])
@@ -48,16 +60,19 @@ describe('String Calculator add', () => {
     jest.spyOn(extractNumbersStub, 'extract').mockReturnValueOnce([-3214, -12])
     expect(() => sut.add(' -3214, -12')).toThrowError(new MultipleNegativeNumbersError([-3214,-12]))
   })
-})
 
-describe('String Calculator getCalledCount', () => {
   it('Should returns 0 if StringCalculator.getCalledCount returns how many times add() was invoked.', () => {
-    const { sut } = makeStringCalculator()
+    const { sut, extractNumbersStub } = makeStringCalculator()
+    jest.spyOn(extractNumbersStub, 'extract').mockReturnValueOnce([3, 2])
     sut.add('3, 2')
+    jest.spyOn(extractNumbersStub, 'extract').mockReturnValueOnce([3, 2])
     sut.add('3, 2')
+    jest.spyOn(extractNumbersStub, 'extract').mockReturnValueOnce([3, 2])
     sut.add('3, 2')
-    expect(sut.getCalledCount()).toBe(3)
+    let timesCalled = sut.getCalledCount()
+    expect(timesCalled).toBe(3)
     sut.add()
-    expect(sut.getCalledCount()).toBe(4)
+    timesCalled = sut.getCalledCount()
+    expect(timesCalled).toBe(4)
   })
 })

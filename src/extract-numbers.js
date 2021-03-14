@@ -6,7 +6,7 @@ class ExtractNumbers {
     this.constructDelimiters()
   }
 
-  extract(numbers = "") {
+  extract(numbers) {
     numbers = this.verifyInputDelimiters(numbers)
     let numbersConverted = this.convertArray(numbers)
       .filter(number => number <= 1000)
@@ -22,14 +22,15 @@ class ExtractNumbers {
     return [string.slice(2, string.match(/\n/).index)]
   }
 
-  verifyInputDelimiters(numbers = '') {
+  verifyInputDelimiters(numbers) {
     if (/^\/\//.test(numbers)) {
       let delimiters = this.extractDelimiters(numbers)
       this.defaultDelimiter = delimiters 
       this.constructDelimiters()
       return numbers.slice(3)
+    } else {
+      return numbers
     }
-    return numbers
   }
 
   convertArray(numbers) {

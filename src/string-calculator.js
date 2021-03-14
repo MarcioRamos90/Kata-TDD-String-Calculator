@@ -14,14 +14,11 @@ class StringCalculator {
     if (!numbers) return 0
     let numbersConverted = this.extractNumbers.extract(numbers)
     this.numbersValidator(numbersConverted)
-    return this.numbersConverted(numbersConverted)
-  }
-  
-  numbersConverted(numbers) {
-    return reduceArray(numbers)
+    const result = reduceArray(numbersConverted)
+    return result
   }
 
-  numbersValidator(numbers = 0) {
+  numbersValidator(numbers) {
     let count = 0
     for (const num of numbers) {
       if (num < 0) {
@@ -36,7 +33,8 @@ class StringCalculator {
   }
 
   getCalledCount() {
-    return this.timesAddWasInvoked
+    const timesCalled = this.timesAddWasInvoked
+    return timesCalled
   }
 
   setTimesAddWasInvoked() {
