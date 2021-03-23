@@ -1,7 +1,7 @@
 [![Test Coverage: 100%](https://img.shields.io/badge/Test%20Coverage-100%25-brightgreen.svg?logo=jest)](/tests)
 
 
-# The kata provided by https://osherove.com/tdd-kata-1
+# The kata provided by https://kata-log.rocks/string-calculator-kata
 
 ### How to run:
   git clone
